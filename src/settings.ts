@@ -31,7 +31,7 @@ export class RedactSettingsTab extends PluginSettingTab {
 
 	new Setting(containerEl)  
     .setName('Spaces')
-	.setDesc('Behavior for spaces in redacted text. (Default: Ignore)')
+	.setDesc('Behavior for spaces in redacted text; default is "ignore".')
     .addDropdown((dropdown) =>  
        dropdown
     	.addOption(redactBehavior.Ignore, 'Ignore')  
@@ -46,7 +46,7 @@ export class RedactSettingsTab extends PluginSettingTab {
 
 	new Setting(containerEl)  
     .setName('Symbols')  
-    .setDesc('Behavior for symbols in redacted text. (Default: Delete)')
+    .setDesc('Behavior for symbols in redacted text; default is "delete".')
     .addDropdown((dropdown) =>  
        dropdown  
           .addOption(redactBehavior.Ignore, 'Ignore')  

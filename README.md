@@ -1,6 +1,6 @@
 # Redact Tool Plugin for Obsidian.md.
 
-This plugin adds a new configurable command to redact the selected text.
+Adds a new configurable command to redact the selected text.
 
 Features:
 - Ignores control characters like tabs and new lines.

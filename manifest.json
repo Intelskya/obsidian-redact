@@ -1,9 +1,9 @@
 {
 	"id": "redact",
 	"name": "Redact",
-	"version": "1.0.1",
+	"version": "1.0.2",
 	"minAppVersion": "0.15.0",
-	"description": "Redact selected text with a command or hotkey.",
+	"description": "Redact selected text with a command or shortcut.",
 	"author": "Intelskya",
 	"authorUrl": "https://github.com/Intelskya",
 	"fundingUrl": "-",

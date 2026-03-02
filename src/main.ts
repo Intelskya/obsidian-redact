@@ -23,7 +23,8 @@ export default class Redact extends Plugin {
 	settings: redactSettings;
 
 	async loadSettings() {
-    this.settings = Object.assign({}, DEFAULT_SETTINGS, await this.loadData());
+    const loaded = (await this.loadData()) as Partial<redactSettings>;
+    this.settings = Object.assign({}, DEFAULT_SETTINGS, loaded) as redactSettings;
 	}
 
 	async saveSettings() {
@@ -35,8 +36,8 @@ export default class Redact extends Plugin {
 		this.addSettingTab(new RedactSettingsTab(this.app, this));
 
     	this.addCommand({
-    	  id: 'redact',
-    	  name: 'Redact selected text',
+    	  id: 'expunge',
+    	  name: 'Expunge selected text',
     	  editorCallback: (editor: Editor) => {
     	    const selection = editor.getSelection();
     	    editor.replaceSelection(this.redactedText(selection));
