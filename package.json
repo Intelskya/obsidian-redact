@@ -1,6 +1,6 @@
 {
 	"name": "obsidian-redact",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"description": "Content redaction tool plugin for Obsidian.md.",
 	"main": "main.js",
 	"type": "module",
