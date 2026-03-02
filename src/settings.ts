@@ -1,36 +1,54 @@
-import {App, PluginSettingTab, Setting} from "obsidian";
-import MyPlugin from "./main";
+import Redact from './main';
+import { App, PluginSettingTab, Setting } from 'obsidian';
 
-export interface MyPluginSettings {
-	mySetting: string;
-}
+export class RedactSettingsTab extends PluginSettingTab {
+  plugin: Redact;
 
-export const DEFAULT_SETTINGS: MyPluginSettings = {
-	mySetting: 'default'
-}
+  constructor(app: App, plugin: Redact) {
+    super(app, plugin);
+    this.plugin = plugin;
+  }
 
-export class SampleSettingTab extends PluginSettingTab {
-	plugin: MyPlugin;
+  display(): void {
+    let { containerEl } = this;
 
-	constructor(app: App, plugin: MyPlugin) {
-		super(app, plugin);
-		this.plugin = plugin;
-	}
+    containerEl.empty();
 
-	display(): void {
-		const {containerEl} = this;
+	new Setting(containerEl)  
+    .setName('Redact character')  
+    .setDesc('Redacted text content will be replaced with this character.')
+    .addText((text) =>  
+       text  
+          .setPlaceholder("█")  
+          .setValue(this.plugin.settings.redactCharacter)  
+          .onChange(async (value) => {  
+			if(!value) value = "█";
+			this.plugin.settings.redactCharacter = value;
+			await this.plugin.saveSettings();  
+          })
+    );
 
-		containerEl.empty();
+	new Setting(containerEl)  
+    	.setName('Ignore spaces')  
+    	.addToggle(toggle => toggle  
+    	   .setValue(this.plugin.settings.ignoreSpaces)  
+    	   .onChange(async (value) => {  
+    	      this.plugin.settings.ignoreSpaces = value;  
+    	      await this.plugin.saveSettings();  
+    	      this.display();  
+    	   })  
+    	);
 
-		new Setting(containerEl)
-			.setName('Settings #1')
-			.setDesc('It\'s a secret')
-			.addText(text => text
-				.setPlaceholder('Enter your secret')
-				.setValue(this.plugin.settings.mySetting)
-				.onChange(async (value) => {
-					this.plugin.settings.mySetting = value;
-					await this.plugin.saveSettings();
-				}));
-	}
+	new Setting(containerEl)  
+    	.setName('Ignore symbols')
+    	.addToggle(toggle => toggle  
+    	   .setValue(this.plugin.settings.ignoreSymbols)  
+    	   .onChange(async (value) => {  
+    	      this.plugin.settings.ignoreSymbols = value;  
+    	      await this.plugin.saveSettings();  
+    	      this.display();  
+    	   })  
+    	);
+
+  }
 }

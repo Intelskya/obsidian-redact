@@ -1,7 +1,7 @@
 {
-	"name": "obsidian-sample-plugin",
+	"name": "obsidian-redact",
 	"version": "1.0.0",
-	"description": "This is a sample plugin for Obsidian (https://obsidian.md)",
+	"description": "Content redaction tool plugin for Obsidian.md.",
 	"main": "main.js",
 	"type": "module",
 	"scripts": {

@@ -1,11 +1,11 @@
 {
-	"id": "sample-plugin",
-	"name": "Sample Plugin",
+	"id": "redact",
+	"name": "Redact",
 	"version": "1.0.0",
 	"minAppVersion": "0.15.0",
-	"description": "Demonstrates some of the capabilities of the Obsidian API.",
-	"author": "Obsidian",
-	"authorUrl": "https://obsidian.md",
-	"fundingUrl": "https://obsidian.md/pricing",
+	"description": "Redact selected text with a command or hotkey.",
+	"author": "Intelskya",
+	"authorUrl": "https://github.com/Intelskya",
+	"fundingUrl": "-",
 	"isDesktopOnly": false
 }
