@@ -11,8 +11,8 @@ Features:
     - Delete: Deletes spaces.
 - Behavior options for symbols in redacted text:
     - Ignore: Keeps symbols as is.
-    - Redact: Redacts spaces as is.
-    - Delete: Deletes spaces. (Default)
+    - Redact: Redacts symbols.
+    - Delete: Deletes symbols. (Default)
 
 ---
 
