@@ -1,16 +1,22 @@
 import { Editor, Plugin } from "obsidian";
-import { RedactSettingsTab } from "settings";
+import { RedactSettingsTab } from "./settings";
 
-interface redactSettings {
+export enum redactBehavior{
+	Ignore = "ignore",
+	Redact = "redact",
+	Delete = "delete"
+}
+
+export interface redactSettings {
 	redactCharacter: string;
-	ignoreSpaces: boolean;
-	ignoreSymbols: boolean;
+	behaviorSpaces: redactBehavior;
+	behaviorSymbols: redactBehavior;
 }
 
 const DEFAULT_SETTINGS: Partial<redactSettings> = {
 	redactCharacter: "█",
-	ignoreSpaces: true,
-	ignoreSymbols: true,
+	behaviorSpaces: redactBehavior.Ignore,
+	behaviorSymbols: redactBehavior.Delete,
 };
 
 export default class Redact extends Plugin {
@@ -39,21 +45,30 @@ export default class Redact extends Plugin {
   	}
 
   	redactedText(text:string): string {
-		let controlChars = ["	","\n"]
-
-		let redactedText = ""
+		let controlChars = ["	","\n","\r","\v","\f","█"];
+		let redactedText = "";
 		for (let char of text.split("")){
 			if(controlChars.contains(char)) {
 				redactedText += char;
 				continue;
 			}
-			if(this.settings.ignoreSpaces && char == " "){
-				redactedText += char;
-				continue;
+			if(char == " "){
+				switch(this.settings.behaviorSpaces){
+					case redactBehavior.Delete: continue;
+					case redactBehavior.Ignore: {
+						redactedText += char;
+						continue;
+					}
+				}
 			}
-			if(this.settings.ignoreSymbols && !/^[\p{L}\p{N}]$/u.test(char)){
-				redactedText += char;
-				continue;
+			else if(!/^[\p{L}\p{N}]$/u.test(char)){
+				switch(this.settings.behaviorSymbols){
+					case redactBehavior.Delete: continue;
+					case redactBehavior.Ignore: {
+						redactedText += char;
+						continue;
+					}
+				}
 			}
 			redactedText += this.settings.redactCharacter;
 		}

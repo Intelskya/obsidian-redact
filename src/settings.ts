@@ -1,4 +1,5 @@
 import Redact from './main';
+import { redactBehavior } from './main';
 import { App, PluginSettingTab, Setting } from 'obsidian';
 
 export class RedactSettingsTab extends PluginSettingTab {
@@ -29,25 +30,33 @@ export class RedactSettingsTab extends PluginSettingTab {
     );
 
 	new Setting(containerEl)  
-    	.setName('Ignore spaces')  
-    	.addToggle(toggle => toggle  
-    	   .setValue(this.plugin.settings.ignoreSpaces)  
-    	   .onChange(async (value) => {  
-    	      this.plugin.settings.ignoreSpaces = value;  
-    	      await this.plugin.saveSettings();  
-    	      this.display();  
-    	   })  
-    	);
+    .setName('Spaces')
+	.setDesc('Behavior for spaces in redacted text. (Default: Ignore)')
+    .addDropdown((dropdown) =>  
+       dropdown
+    	.addOption(redactBehavior.Ignore, 'Ignore')  
+    	.addOption(redactBehavior.Redact, 'Redact')  
+    	.addOption(redactBehavior.Delete, 'Delete')  
+    	.setValue(this.plugin.settings.behaviorSpaces)  
+    	.onChange(async (value) => {  
+             this.plugin.settings.behaviorSpaces = value as redactBehavior;
+             await this.plugin.saveSettings();  
+          })  
+    );
 
 	new Setting(containerEl)  
-    	.setName('Ignore symbols')
-    	.addToggle(toggle => toggle  
-    	   .setValue(this.plugin.settings.ignoreSymbols)  
-    	   .onChange(async (value) => {  
-    	      this.plugin.settings.ignoreSymbols = value;  
-    	      await this.plugin.saveSettings();  
-    	      this.display();  
-    	   })  
-    	);
+    .setName('Symbols')  
+    .setDesc('Behavior for symbols in redacted text. (Default: Delete)')
+    .addDropdown((dropdown) =>  
+       dropdown  
+          .addOption(redactBehavior.Ignore, 'Ignore')  
+          .addOption(redactBehavior.Redact, 'Redact')  
+          .addOption(redactBehavior.Delete, 'Delete')  
+          .setValue(this.plugin.settings.behaviorSymbols)  
+          .onChange(async (value) => {  
+             this.plugin.settings.behaviorSymbols = value as redactBehavior;
+             await this.plugin.saveSettings();  
+          })  
+    );
   }
 }

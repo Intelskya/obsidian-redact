@@ -4,9 +4,15 @@ This plugin adds a new configurable command to redact the selected text.
 
 Features:
 - Ignores control characters like tabs and new lines.
-- Override for the redaction character. (Default character is "█")
-- Toggle for ignoring spaces. (Set to true by default)
-- Toggle for ignoring symbols. (Set to true by default)
+- Option for overriding the redaction character. (Default: "█")
+- Behavior options for spaces in redacted text:
+    - Ignore: Keeps spaces as is. (Default)
+    - Redact: Redacts spaces.
+    - Delete: Deletes spaces.
+- Behavior options for symbols in redacted text:
+    - Ignore: Keeps symbols as is.
+    - Redact: Redacts spaces as is.
+    - Delete: Deletes spaces. (Default)
 
 ---
 
