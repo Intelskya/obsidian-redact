@@ -37,7 +37,6 @@ export default class Redact extends Plugin {
     	    editor.replaceSelection(this.redactedText(selection));
     	  },
     	});
-		
   	}
 
   	redactedText(text:string): string {

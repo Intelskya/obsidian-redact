@@ -49,6 +49,5 @@ export class RedactSettingsTab extends PluginSettingTab {
     	      this.display();  
     	   })  
     	);
-
   }
 }
