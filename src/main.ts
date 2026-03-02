@@ -13,7 +13,6 @@ const DEFAULT_SETTINGS: Partial<redactSettings> = {
 	ignoreSymbols: true,
 };
 
-
 export default class Redact extends Plugin {
 	settings: redactSettings;
 
