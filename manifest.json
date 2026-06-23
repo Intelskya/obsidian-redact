@@ -1,10 +1,11 @@
 {
 	"id": "redact",
 	"name": "Redact",
-	"version": "1.0.3",
+	"version": "1.0.4",
 	"minAppVersion": "0.15.0",
-	"description": "Apply redaction to selected text with a command or a shortcut.",
+	"description": "Sanitize selected text with a command or a shortcut.",
 	"author": "Intelskya",
 	"authorUrl": "https://github.com/Intelskya",
+	"fundingUrl": "https://github.com/Intelskya",
 	"isDesktopOnly": false
 }
