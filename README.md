@@ -16,6 +16,18 @@ Features:
 
 ---
 
+Usage:
+1. Set a keybinding in the plugin settings.
+2. Select any text.
+3. Select 'Redact selected text' from the command pallete or use the binded key.
+
+---
+
+How to Install:
+- Click the 'install' button at the top of this community plugin page.
+
+---
+
 I made this plugin primarily for personal use, I may fix problems here and there but don't expect consistent updates.
 
 ~ Intelskya
