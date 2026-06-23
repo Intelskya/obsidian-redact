@@ -1,7 +1,7 @@
 {
 	"id": "redact",
 	"name": "Redact",
-	"version": "1.0.4",
+	"version": "1.0.3",
 	"minAppVersion": "0.15.0",
 	"description": "Sanitize selected text with a command or a shortcut.",
 	"author": "Intelskya",
